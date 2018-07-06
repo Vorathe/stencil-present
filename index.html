@@ -38,9 +38,10 @@
 					<ul>
 						<li>Introduction to Web Components</li>
 						<li>Introduction to Stencil</li>
+						<li>Client Needs & Stencil</li>
 						<li>Stencil API</li>
 						<li>Demo time</li>
-						<li>Where to go next</li>
+						<li>Pitfalls</li>
 					</ul>
 				</section>
 				<section>
@@ -104,6 +105,24 @@ document.registerElement('my-component', MyComponent);
 					</ul>
 				</section>
 				<section>
+					<h2>Client Needs & Stencil</h2>
+					<ul>
+						<li>White label banking platform</li>
+						<li>Self-service APIs</li>
+						<li>UI Component Library</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Client Needs & Stencil (Cont.)</h2>
+					<ul>
+						<li>Began with Angular components</li>
+						<li>Needed universal solution for UI components</li>
+						<li>Desire to use bleeding edge technology</li>
+						<li>Good developer experience</li>
+						<li>Typescript a must</li>
+					</ul>
+				</section>
+				<section>
 					<h2>Example Stencil Component</h2>
 					<pre><code data-trim data-noescape class="typescript">
 						import { Component, Prop } from '@stencil/core';
@@ -155,7 +174,7 @@ document.registerElement('my-component', MyComponent);
 				<section>
 					<h2>Demo time</h2>
 					<p>
-						May the demo gods be with us
+						May the demo gods be with us!
 					</p>
 				</section>
 				<section>
@@ -167,28 +186,34 @@ document.registerElement('my-component', MyComponent);
 					</ul>
 				</section>
 				<section>
-					<h2>Getting Started</h2>
-					<pre><code data-trim data-noescape class="bash">
-						git clone https://github.com/ionic-team/stencil-starter.git my-app
-						cd my-app
-						npm install
-						npm start
-					</code></pre>
-				</section>
-				<section>
-					<h2>Where to go next?</h2>
+					<h2>Pitfalls & Issues</h2>
 					<ul>
-						<li><a target="_blank" href="https://stenciljs.com/docs/my-first-component">Component Basics</a></li>
-						<li><a target="_blank" href="https://stenciljs.com/docs/templating">How Templating/JSX Works</a></li>
-						<li><a target="_blank" href="https://stenciljs.com/docs/decorators">Using Stencil's API</a></li>
-						<li><a target="_blank" href="https://stenciljs.com/docs/events">Sending and listening for Events</a></li>
-						<li><a target="_blank" href="https://stenciljs.com/docs/component-lifecycle">Component Lifecycle Hooks</a></li>
-						<li><a target="_blank" href="https://stenciljs.com/docs/stencil-config">Configuring Stencil Component Collections</a></li>
+						<li>Most end-to-end testing frameworks rely on calls to querySelector. Elements in Shadow DOM are selectable by neither.</li>
+						<li>Reliant on polyfills</li>
+						<li>Web Components Spec still in draft</li>
+						<li>Lacking documentation</li>
 					</ul>
 				</section>
 				<section>
-					<h2>Watch the Announcement</h2>
-					<iframe width="560" height="315" src="https://www.youtube.com/embed/UfD-k7aHkQE" frameborder="0" allowfullscreen></iframe>
+					<h2>What's up with E2E?</h2>
+					<br>
+					<h4>Doesn't work with shadowRoot enabled</h4>
+					<pre><code data-trim data-noescape class="javascript">
+						document.querySelector('custom-element custom-element-detail');
+					</code></pre>
+					<h4>Instead, we have to select shadowRoot</h4>
+					<pre><code data-trim data-noescape class="javascript">
+						document.querySelector('custom-element').shadowRoot
+						.querySelector('custom-element-detail');
+					</code></pre>
+				</section>
+				<section>
+					<h2>A Solution</h2>
+					<ul>
+						<li>Custom Webdriver.io plugin: wdio-webcomponents</li>
+						<li>Patches Webdriver to be compatible with open Shadow Roots</li>
+						<li>Written and maintained by a single individual, so use with caution</li>
+					</ul>
 				</section>
 				<section>
 					<h2>Community Resources</h2>
@@ -200,12 +225,7 @@ document.registerElement('my-component', MyComponent);
 					</ul>
 			</section>
 				<section>
-					<h2>Thanks!</h2>
-					<ul>
-						<li><a href="http://stenciljs.com/">StencilJS.com</a></li>
-						<li><a href="https://twitter.com/stenciljs">@StencilJS on Twitter</a></li>
-						<li><a href="https://github.com/ionic-team/stencil">github.com/ionic-team/stencil</a></li>
-					</ul>
+					<h2>Thanks, Ya'll!</h2>
 				</section>
 			</div>
 		</div>
